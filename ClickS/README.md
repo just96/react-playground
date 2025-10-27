@@ -1,6 +1,6 @@
 # ClickS
 
-A simple React app that tracks a counter and keeps a history of all previous counts.
+A React app that tracks a counter and keeps a history of all previous counts.
 
 ## Features
 
