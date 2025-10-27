@@ -1,4 +1,4 @@
-# React Counter with History
+# ClickS
 
 A simple React app that tracks a counter and keeps a history of all previous counts.
 
