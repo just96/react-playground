@@ -1,4 +1,4 @@
-# React Word Tracker
+# WordUp
 
 A React app that tracks user input in real-time, counts words and characters, and keeps a history of typed words.
 
