@@ -1,6 +1,6 @@
 # TaskMaster
 
-A simple React app for managing tasks, allowing users to add, remove, and mark tasks as completed.
+A React app for managing tasks, allowing users to add, remove, and mark tasks as completed.
 
 ## Features
 
