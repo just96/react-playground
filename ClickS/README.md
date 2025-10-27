@@ -1,0 +1,17 @@
+React Counter with History
+
+A simple React app that tracks a counter and keeps a history of all previous counts.
+
+Features
+
+-Increment the counter by 1.
+
+-View the history of all previous counts.
+
+-Simple and clean UI using React components.
+
+Components
+
+-ButtonCounter: Displays the current count and a button to increase it.
+
+-History: Displays a list of all previous counts.
