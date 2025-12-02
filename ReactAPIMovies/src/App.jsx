@@ -6,15 +6,19 @@ import MovieList from "./components/MovieList";
 function App() {
   const [movies, setMovies] = useState([]);
   const [inputMovie, setInputMovie] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const res = await fetch("https://jsonfakery.com/movies/simple-paginate");
         const data = await res.json();
         setMovies(data.data);
       } catch (error) {
         console.error("Error getting data!", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -51,8 +55,17 @@ function App() {
         inputValue={inputMovie}
         addMovie={addMovie}
       ></MovieForm>
-      <MovieList movies={movies} handleDelete={deleteMovie} handleEdit={editMovie}></MovieList>
-      {movies.length === 0 && <p className="text-center text-5xl text-primary">No Movies...</p>}
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <span className="loading loading-dots loading-xl"></span>
+        </div>
+      ) : movies.length === 0 ? (
+        <div className="flex justify-center items-center h-40">
+          <p className="text-2xl text-primary">No Movies...</p>
+        </div>
+      ) : (
+        <MovieList movies={movies} handleDelete={deleteMovie} handleEdit={editMovie}></MovieList>
+      )}
     </>
   );
 }
