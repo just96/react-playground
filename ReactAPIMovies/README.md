@@ -16,7 +16,7 @@ A simple **React** application to manage movies, with the ability to **add, edit
 
 ## Technologies
 
-- **Frontend:** React, JSX, CSS  
+- **Frontend:** React, JSX, TailwindCSS, daisyUI
 - **Backend/API:** Simulated data via fetch (JSON fake API)  
 - **State management:** useState and useEffect  
 - **Componentization:** Generic and reusable components
