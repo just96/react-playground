@@ -1,3 +1,3 @@
-export default function Input({ placeholder, onChange, value, type = "text" }) {
-  return <input type={type} placeholder={placeholder} onChange={onChange} value={value} />;
+export default function Input({ className, placeholder, onChange, value, type = "text" }) {
+  return <input className={className} type={type} placeholder={placeholder} onChange={onChange} value={value} />;
 }

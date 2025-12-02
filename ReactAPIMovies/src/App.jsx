@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   const addMovie = () => {
-    if (!inputMovie) return;
+    if (!inputMovie.trim()) return;
     const newMovie = {
       id: Date.now().toString(),
       original_title: inputMovie,
@@ -44,7 +44,6 @@ function App() {
 
   return (
     <>
-      <h1>React API Movies</h1>
       <MovieForm
         handleChange={(e) => {
           setInputMovie(e.target.value);
@@ -53,6 +52,7 @@ function App() {
         addMovie={addMovie}
       ></MovieForm>
       <MovieList movies={movies} handleDelete={deleteMovie} handleEdit={editMovie}></MovieList>
+      {movies.length === 0 && <p className="text-center text-5xl text-primary">No Movies...</p>}
     </>
   );
 }

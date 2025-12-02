@@ -1,9 +1,6 @@
-export default function Button({ children, handleClick, buttonStyle = {} }) {
-  const defaultStyle = { padding: "1px 1px", fontSize: "12px" };
-  const combinedStyle = { ...defaultStyle, ...buttonStyle };
-
+export default function Button({ className, children, handleClick }) {
   return (
-    <button type="button" onClick={handleClick} style={combinedStyle}>
+    <button className={className} type="button" onClick={handleClick}>
       {children}
     </button>
   );
