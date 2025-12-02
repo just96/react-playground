@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import MovieForm from "./components/MovieForm";
+import MovieList from "./components/MovieList";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -11,7 +13,6 @@ function App() {
         const res = await fetch("https://jsonfakery.com/movies/simple-paginate");
         const data = await res.json();
         setMovies(data.data);
-        console.log(data.data);
       } catch (error) {
         console.error("Error getting data!", error);
       }
@@ -19,11 +20,11 @@ function App() {
     fetchData();
   }, []);
 
-  const addMovie = (movieTitle) => {
-    if (!movieTitle) return;
+  const addMovie = () => {
+    if (!inputMovie) return;
     const newMovie = {
       id: Date.now().toString(),
-      original_title: movieTitle,
+      original_title: inputMovie,
     };
     setMovies((prev) => [newMovie, ...prev]);
     setInputMovie("");
@@ -44,46 +45,14 @@ function App() {
   return (
     <>
       <h1>React API Movies</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Insert new movie"
-          onChange={(e) => {
-            setInputMovie(e.target.value);
-          }}
-          value={inputMovie}
-        ></input>
-        <button
-          type="button"
-          onClick={() => addMovie(inputMovie)}
-          style={{ color: "green", padding: "1px 1px", fontSize: "12px" }}
-        >
-          Add Movie
-        </button>
-      </div>
-      <ul>
-        {movies.map((movie) => {
-          return (
-            <li key={movie.id}>
-              {movie.original_title}
-              <button
-                style={{ color: "red", padding: "1px 1px", fontSize: "12px" }}
-                type="button"
-                onClick={() => deleteMovie(movie.id)}
-              >
-                Delete
-              </button>
-              <button
-                style={{ color: "blue", padding: "1px 1px", fontSize: "12px" }}
-                type="button"
-                onClick={() => editMovie(movie.id, movie.original_title)}
-              >
-                Edit
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <MovieForm
+        handleChange={(e) => {
+          setInputMovie(e.target.value);
+        }}
+        inputValue={inputMovie}
+        addMovie={addMovie}
+      ></MovieForm>
+      <MovieList movies={movies} handleDelete={deleteMovie} handleEdit={editMovie}></MovieList>
     </>
   );
 }
